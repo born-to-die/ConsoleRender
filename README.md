@@ -1,6 +1,30 @@
 ConsoleRender
 =====================
 
+**ConsoleRender** is a minimalistic class for output to the console.
+
+The main idea of the class and its methods is the back buffer and the screen buffer.
+* Back buffer - what needs to be drawn
+* Screen buffer - what is now drawn
+
+To provide faster rendering, only the rear buffer cell is drawn that is different from the screen buffer cell. This allows you to reduce the delay between drawing a new "frame".
+
+Cells can differ in three ways:
+1. Symbol
+2. Symbol Color
+3. Background color
+
+The problem of rendering the back buffer is completely different from the screen buffer
+
+Such a problem arises, for example, when it is necessary to fill in a new “frame” with a new color. But if for filling you can cancel the comparison with the screen buffer, and draw directly, then with something difficult and large-scale drawn in a new frame, this will not work. The solution is to turn off the comparison and draw without wasting time. Unfortunately, there is no direct rendering mode yet, so you need to control and implement the output yourself
+
+Planned in the future
+1. Direct output mode with correct operation when switching to double buffer mode
+2. Switching modes with correct operation
+3. Predicting a very different back buffer for rendering without comparing with the screen buffer
+
+---
+
 **ConsoleRender** - минималистичный класс для вывода в консоль.
 
 Основная идея класса и его методов - задний буфер и буфер экрана. 
